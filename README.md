@@ -1,7 +1,7 @@
 # PyURL Shortener
 
 A URL shortener that works locally without the need for an external database.  
-All it's index is created and maintained in the local storage.
+All its index is created and maintained in the local disk.
 
 # Design Idea
 
