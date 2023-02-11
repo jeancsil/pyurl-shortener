@@ -1,0 +1,2 @@
+class URLExistsError(Exception):
+    pass
