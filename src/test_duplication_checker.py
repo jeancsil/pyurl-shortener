@@ -1,16 +1,24 @@
 from unittest import TestCase
+
 from src.duplication_checker import DuplicationChecker
 
 
 class TestDuplicationChecker(TestCase):
     """Test for Duplication Checker class"""
+
     @classmethod
     def setUpClass(cls):
         database_stub = dict({"g": "https://www.google.com/"})
         cls.duplication_checker = DuplicationChecker(database_stub)
 
     def test_finds_duplicated_code_in_database(self):
-        self.assertTrue(self.duplication_checker.exists("g"))
+        self.assertTrue(self.duplication_checker.short_code_exists("g"))
 
     def test_does_not_find_duplicated_code_in_database(self):
-        self.assertFalse(self.duplication_checker.exists("uniq"))
+        self.assertFalse(self.duplication_checker.short_code_exists("uniq"))
+
+    def test_finds_duplicated_url_in_database(self):
+        self.assertTrue(self.duplication_checker.url_exists("https://www.google.com/"))
+
+    def test_does_not_find_similar_url_in_database(self):
+        self.assertFalse(self.duplication_checker.url_exists("https://www.google.es"))
