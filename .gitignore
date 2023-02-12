@@ -1,7 +1,8 @@
 **/__pycache__/
 # pyenv
 .python-version
-
+# pytest
+**/.pytest_cache/
 # Environments
 .env
 .venv
