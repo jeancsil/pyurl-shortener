@@ -6,6 +6,7 @@ from src.url_exists_error import URLExistsError
 
 
 class UrlShortener(DuplicationChecker):
+    """Generates a shorter version of the URL"""
     def __init__(self, duplication_checker: DuplicationChecker):
         self.duplication_checker = duplication_checker
         self.base_url = "http://localhost:8081"
@@ -25,15 +26,15 @@ class UrlShortener(DuplicationChecker):
         52 letters and I can choose 4: 52!/(4!(52-4)!) = 270725
         52 letters and I can choose 5: 52!/(5!(52-5)!) = 2598960
         """
-        if self.duplication_checker.exists(url):
+        if self.duplication_checker.url_exists(url):
             raise URLExistsError()
 
         code = self._get_random_chars()
-        return "{}?u={}".format(self.base_url, code)
+        return f"{self.base_url}?u={code}"
 
     def _get_random_chars(self, length=3):
         code = "".join(random.sample(self.alphabet, k=length))
-        while self.duplication_checker.exists(code):
+        while self.duplication_checker.url_exists(code):
             code = self._get_random_chars()
 
         return "".join(random.sample(self.alphabet, k=length))
