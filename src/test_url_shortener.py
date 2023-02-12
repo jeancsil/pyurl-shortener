@@ -1,13 +1,12 @@
 from unittest import TestCase
-
-import pytest as pytest
-
+from pytest import raises
 from src.duplication_checker import DuplicationChecker
 from src.url_exists_error import URLExistsError
 from src.url_shortener import UrlShortener
 
 
 class TestUrlShortener(TestCase):
+    """Test for the URL shortener"""
     url_shortener = None
 
     @classmethod
@@ -28,6 +27,6 @@ class TestUrlShortener(TestCase):
 
     def test_existing_url_would_raise_url_exists_error(self):
         """I don't want duplicated URLs with different short codes"""
-        with pytest.raises(URLExistsError):
+        with raises(URLExistsError):
             url = "https://github.com/jeancsil"
             self.url_shortener.reduce(url)

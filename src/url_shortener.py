@@ -6,6 +6,7 @@ from src.url_exists_error import URLExistsError
 
 
 class UrlShortener(DuplicationChecker):
+    """Generates a shorter version of the URL"""
     def __init__(self, duplication_checker: DuplicationChecker):
         self.duplication_checker = duplication_checker
         self.base_url = "http://localhost:8081"

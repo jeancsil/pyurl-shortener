@@ -1,6 +1,6 @@
+from simple_http_server import Redirect
 from simple_http_server import route, controller, HttpError, Response
 from simple_http_server import server
-from simple_http_server import Redirect
 
 # TODO
 # Load the tsv file with the saved URL's into the hashset
@@ -29,7 +29,9 @@ HTML = """
 
 
 @controller
-class MyController:
+class HttpServerController:
+    """HTTP Server that redirects the short URLs to the full URLs"""
+
     def __init__(self) -> None:
         self._hashset = dict()
         print("Loading the dict.........")
@@ -44,13 +46,13 @@ class MyController:
                 self._hashset[key] = url
         # print(self._hashset)
 
-    @route("/", method="GET")
-    def root(self, u: str):
-        if u not in self._hashset:
-            print("Url is None for the id: {}".format(u))
+    @route("/", method="GET", params="u")
+    def root(self, code: str):
+        if code not in self._hashset:
+            print("Url is None for the code: {}".format(code))
             raise HttpError(404, "Not found")
 
-        url = self._hashset[u]
+        url = self._hashset[code]
 
         print("Redirecting to {}".format(url))
         return Redirect(url=url)
