@@ -11,8 +11,8 @@ class TestUrlShortener(TestCase):
 
     @classmethod
     def setUpClass(cls):
-        database = dict()
-        with open("./etc/db.tsv", "r") as file:
+        database = {}
+        with open("./etc/db.tsv", "r", encoding="utf-8") as file:
             for line in file:
                 split = line.split('\t')
                 key = split[0]
