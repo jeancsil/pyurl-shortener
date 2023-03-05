@@ -43,17 +43,19 @@ class DatabaseLoader:
         self.database = Database()
 
     def load_from_dict(self, input_dict) -> Database:
+        """Only used for testing purposes"""
         self.__read_lines_and_get_database(input_dict)
         return self.database
 
-    def load(self, path=None) -> Database:
-        load_from = "./etc/db.tsv"
-        if path:
-            load_from = path
-
-        with open(load_from, "r", encoding="utf-8") as file:
+    def load(self) -> Database:
+        with open("./etc/db.tsv", "r", encoding="utf-8") as file:
             self.__read_lines_and_get_database(file)
             return self.database
+
+    def add_row(self, database_row: DatabaseRow):
+        with open("./etc/db.tsv", "a", encoding="utf-8") as file:
+            file.write(f"{database_row.key}\t{database_row.url}\n")
+            self.database.add(row=database_row)
 
     def __read_lines_and_get_database(self, lines) -> None:
         for line in lines:
