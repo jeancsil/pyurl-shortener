@@ -16,3 +16,4 @@ and then redirects permanently to that address ;)
     - Command line tool to shorten URLs?
 - Maybe opening a shortened link from the terminal?
 - Backup of the database?
+- Create a class to load the database and retain the logic of removing "\n"
