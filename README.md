@@ -12,8 +12,8 @@ and then redirects permanently to that address ;)
 
 # TODO
 
-- Allow insertion of new URLs to be shortened.
-    - Command line tool to shorten URLs?
+- ~~Allow insertion of new URLs to be shortened.~~
+    ~~- Command line tool to shorten URLs?~~
 - Maybe opening a shortened link from the terminal?
 - Backup of the database?
-- Create a class to load the database and retain the logic of removing "\n"
+- ~~Create a class to load the database and retain the logic of removing "\n"~~
