@@ -1,6 +1,8 @@
 import random
 import string
 
+from typing import Tuple
+
 from src.duplication_checker import DuplicationChecker
 from src.url_exists_error import URLExistsError
 
@@ -12,7 +14,7 @@ class UrlShortener(DuplicationChecker):
         self.base_url = "http://localhost:8081"
         self.alphabet = list(string.ascii_lowercase) + list(string.ascii_uppercase)
 
-    def reduce(self, url: str) -> str:
+    def reduce(self, url: str) -> Tuple[str, str]:
         """
         The number of total combinations possible is calculated as:
 
@@ -29,12 +31,12 @@ class UrlShortener(DuplicationChecker):
         if self.duplication_checker.url_exists(url):
             raise URLExistsError()
 
-        code = self._get_random_chars()
-        return f"{self.base_url}?u={code}"
+        code = self._get_random_chars(5)
+        return code, f"{self.base_url}?u={code}"
 
     def _get_random_chars(self, length=3):
         code = "".join(random.sample(self.alphabet, k=length))
-        while self.duplication_checker.url_exists(code):
+        while self.duplication_checker.short_code_exists(code):
             code = self._get_random_chars()
 
         return "".join(random.sample(self.alphabet, k=length))
