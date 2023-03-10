@@ -1,3 +1,5 @@
+[![CircleCI](https://dl.circleci.com/status-badge/img/gh/jeancsil/pyurl-shortener/tree/circleci-project-setup.svg?style=svg)](https://dl.circleci.com/status-badge/redirect/gh/jeancsil/pyurl-shortener/tree/circleci-project-setup)
+
 # PyURL Shortener
 
 A URL shortener that works locally without the need for an external database.  
