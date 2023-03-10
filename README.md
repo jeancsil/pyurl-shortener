@@ -1,4 +1,7 @@
 [![CircleCI](https://dl.circleci.com/status-badge/img/gh/jeancsil/pyurl-shortener/tree/circleci-project-setup.svg?style=svg)](https://dl.circleci.com/status-badge/redirect/gh/jeancsil/pyurl-shortener/tree/circleci-project-setup)
+![pylint](https://github.com/jeancsil/pyurl-shortener/actions/workflows/pylint.yml/badge.svg)
+![pytest](https://github.com/jeancsil/pyurl-shortener/actions/workflows/pytest.yml/badge.svg)
+
 
 # PyURL Shortener
 
