@@ -22,3 +22,4 @@ and then redirects permanently to that address ;)
 - Maybe opening a shortened link from the terminal?
 - Backup of the database?
 - ~~Create a class to load the database and retain the logic of removing "\n"~~
+- Create Makefile
